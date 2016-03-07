@@ -17,6 +17,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "callsite": "^1.0.0",
     "nconf": "^0.8.4"
   },
   "repository": {
