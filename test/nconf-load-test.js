@@ -39,7 +39,7 @@ describe('#load', function () {
 		it('should load variables from a file', function () {
 			// Load our library and the sample config
 			require('../lib/nconf-load.js').load('./fixtures/config.json');
-			// Confirm that the environment variable is set in nconf
+			// Confirm that the file variable is set in nconf
 			expect(nconf.get('file-setting')).to.equal('file_value');
 		});
 	});
@@ -78,7 +78,7 @@ describe('#load', function () {
 			var fileJSON = fs.readFileSync(filepath);
 			var fileObj = JSON.parse(fileJSON);
 			expect(fileObj['a-setting']).to.equal('a_file_value');
-			// Confirm that the environment variable is the one that's used by nconf
+			// Confirm that the argv variable is the one that's used by nconf
 			expect(nconf.get('a-setting')).to.equal('an_argv_value');
 		});
 
@@ -93,7 +93,7 @@ describe('#load', function () {
 			var fileJSON = fs.readFileSync(filepath);
 			var fileObj = JSON.parse(fileJSON);
 			expect(fileObj['a-setting']).to.equal('a_file_value');
-			// Confirm that the environment variable is the one that's used by nconf
+			// Confirm that the argv variable is the one that's used by nconf
 			expect(nconf.get('a-setting')).to.equal('an_argv_value');
 		});
 	});
