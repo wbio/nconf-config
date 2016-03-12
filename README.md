@@ -7,7 +7,13 @@ A small module to automatically load configuration using [nconf](https://github.
 
 Once configuration has been loaded, you can use nconf as you normally would (i.e. `nconf.get('appKeyHere')`)
 
-## Example
+## Installation
+nconf-load is available via [npm](https://www.npmjs.com/package/nconf-load), so to install, simply:
+```shell
+npm install --save nconf-load
+```
+
+## Usage
 Without a configuration file:
 ```javascript
 require('nconf-load').load();
