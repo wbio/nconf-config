@@ -29,3 +29,6 @@ var nconf = require('nconf-load').load('./path/to/config.json');
 
 ## Limitations
 This module does not make use of nconf's other file loading methods (`nconf.file('key', 'path/to/config.json')` and `nconf.file('optional_key', { file: 'config.json', dir: 'search/from/here', search: true })`). They're on the to-do list, but have not been implemented yet.
+
+## Updates
+- **v1.1.0** - Added return of nconf instance to `#load` method to reduce # of requires neeeded by clients
