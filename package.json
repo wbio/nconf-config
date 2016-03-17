@@ -1,7 +1,7 @@
 {
   "name": "nconf-load",
   "version": "1.0.0",
-  "description": "Load configuration settings from file, environment variables, and command line arguments",
+  "description": "Load configuration settings from command line arguments, environment variables, and files (in that order)",
   "main": "./lib/nconf-load",
   "scripts": {
     "test": "mocha test/nconf-load-test.js"
