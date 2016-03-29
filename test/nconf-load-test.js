@@ -42,6 +42,15 @@ describe('#load', function () {
 			// Confirm that the file variable is set in nconf
 			expect(nconf.get('file-setting')).to.equal('file_value');
 		});
+
+		it('should be able to get values set via nconf#set', function () {
+			// Load our library
+			require('../lib/nconf-load.js').load();
+			// Set a value
+			nconf.set('set-setting', 'set_value');
+			// Confirm that the file variable is set in nconf
+			expect(nconf.get('set-setting')).to.equal('set_value');
+		});
 	});
 
 	describe('hierarchy', function () {
@@ -95,6 +104,22 @@ describe('#load', function () {
 			expect(fileObj['a-setting']).to.equal('a_file_value');
 			// Confirm that the argv variable is the one that's used by nconf
 			expect(nconf.get('a-setting')).to.equal('an_argv_value');
+		});
+
+		it('should use values set by nconf#set over anything else', function () {
+			// Add a-setting to argv
+			process.argv.push('--a-setting', 'an_argv_value');
+			// Add a-setting to ENV
+			process.env['a-setting'] = 'an_env_value';
+			// Load our library and the sample config
+			require('../lib/nconf-load.js').load('./fixtures/config.json');
+			// Confirm that the "a-setting" key is in the file
+			var fileJSON = fs.readFileSync(filepath);
+			var fileObj = JSON.parse(fileJSON);
+			expect(fileObj['a-setting']).to.equal('a_file_value');
+			// Set a-setting to something else
+			nconf.set('a-setting', 'a_new_value');
+			expect(nconf.get('a-setting')).to.equal('a_new_value');
 		});
 	});
 });
